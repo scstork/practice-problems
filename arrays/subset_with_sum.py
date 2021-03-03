@@ -26,15 +26,14 @@ class Solution:
 
         # iterate through each item looking for subsets; think this is O(nlog(n))
         # modifying and searching through ranges in each iteration is potentially n
-        ranges = []
+        # space efficiency is terrible
         for outer, index in zip(S, range(len(S))):
+            ranges = []
              # list of tuples of subsets and their sums for optimization; prob the wrong data structure
             for inner in S[index + 1:]:
                 curr_sum = outer + inner
                 if curr_sum == k:
                     return [outer, inner]
-                if curr_sum < k:
-                    ranges.append(([outer, inner], curr_sum))
                 for (subset, subset_sum), subset_index in zip(ranges, range(len(ranges))):
                     inner_sum = subset_sum + inner
                     if inner_sum == k:
@@ -43,6 +42,8 @@ class Solution:
                     elif inner_sum < k:
                         subset.append(inner)
                         ranges[subset_index] = (subset, inner_sum)
+                if curr_sum < k:
+                    ranges.append(([outer, inner], curr_sum))
 
         return None
 
