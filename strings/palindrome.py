@@ -5,7 +5,7 @@ class Solution:
     """Given a string s, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases."""
 
     def isPalindrome(self, s: str) -> bool:
-        s =  re.sub(r'[\W_]+', '', s)
+        s =  re.sub(r'[\W_]+', '', s).lower()
         print(s)
         length = len(s)
         if length == 0:
@@ -13,7 +13,7 @@ class Solution:
         start = 0
         end = length - 1
         while start < length / 2:
-            if s[start].lower() == s[end].lower():
+            if s[start] == s[end]:
                 start += 1
                 end -= 1
             else:
