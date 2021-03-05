@@ -6,7 +6,6 @@ class Solution:
 
     def isPalindrome(self, s: str) -> bool:
         s =  re.sub(r'[\W_]+', '', s).lower()
-        print(s)
         length = len(s)
         if length == 0:
             return True
