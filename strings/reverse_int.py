@@ -7,10 +7,8 @@ class Solution:
         strx = str(x)
         if strx[0] == "-":
             strx = f"-{strx[:0:-1]}"
-            print(x, strx)
         else:
             strx= strx[::-1]
-            print(x, strx)
         try:
             intx = int(strx)
             if intx > -2**31 and intx < 2**31 - 1:
