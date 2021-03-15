@@ -7,7 +7,25 @@ class Solution:
     If needle is an empty string, return 0.
     """
 
-    def strStr(self, haystack: str, needle: str) -> int:
+    class Solution:
+    def strStr_faster(self, haystack: str, needle: str) -> int:
+        # runs in less time than the previous solution
+        if needle == "":
+            return 0
+        # check if first len(needle) characters in haystack == needle
+        # use string splicing to compare strings
+        orig_index = 0
+        while len(haystack) >= len(needle):
+            index = 0
+            if haystack[:len(needle)] == needle:
+                return orig_index
+            orig_index += 1
+            haystack = haystack[1:]
+        return -1
+        
+
+    def strStr_lessmem(self, haystack: str, needle: str) -> int:
+        # uses less memory than the previous solution
         if needle == "":
             return 0
         # check if first len(needle) characters in haystack == needle
